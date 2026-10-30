@@ -1,7 +1,11 @@
 # PROPUESTA: PIPELINE DETERMINISTA DE ESTRUCTURACIÓN TÉCNICA Y GOBERNANZA CoE
 
-> Estado: propuesta acordada, sin implementar. Base inicial generada externamente y ajustada; no se sigue al pie de la letra.
-> Al implementar, esta propuesta se divide en 8 especificaciones: 4 por stage y 4 por script (ver sección 7).
+> Estado: **implementada** (rama `feat/evaluacion-proyectos`). La fuente de verdad ahora es `SKILL.md` + `specs/` (8 especificaciones: 4 stages y 4 scripts); este documento queda como registro de decisiones.
+> Ajustes hechos al implementar:
+> - No se usa `python-docx`: el generador SONDA solo usa la librería estándar. Dependencia única: `openpyxl`.
+> - Nuevo `scripts/extract_transcript.py`: lee `.txt`/`.vtt`/`.docx`, elige la transcripción más reciente de una carpeta y entrega los datos de confirmación (duración, participantes, tema).
+> - Los scripts se invocan con `${CLAUDE_SKILL_DIR}` (variable verificada en la documentación oficial de skills), no con una ruta fija.
+> - Contratos de ejemplo en `examples/*.json`; plantilla SONDA en `scripts/sonda/`.
 
 ## 1. CONTEXTO Y OBJETIVO
 Equipo de operaciones TI (N1/N2) bajo gobernanza de un Centro de Excelencia (CoE). El pipeline corre en Claude Code y procesa transcripciones `.txt` de reuniones de levantamiento en Microsoft Teams para:
