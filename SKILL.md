@@ -1,10 +1,10 @@
 ---
-name: evaluacion-proyectos
+name: ariadna
 description: Estructura una reunión de levantamiento técnico (transcripción de Teams) en propuesta SONDA (.docx), casos de uso y historias de usuario (.xlsx), diagrama de secuencia (.drawio) y valorización CoE. Usar cuando el usuario pida evaluar, estructurar o levantar una iniciativa/proyecto a partir de una reunión o transcripción.
 argument-hint: "[nombre de la reunión o ruta de la transcripción]"
 ---
 
-# Evaluación de proyectos CoE
+# Ariadna: evaluación de proyectos CoE
 
 Entrada del usuario: $ARGUMENTS
 

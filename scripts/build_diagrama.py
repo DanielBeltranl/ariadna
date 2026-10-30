@@ -25,7 +25,7 @@ def build(spec):
     center = {name: TOP + i * COL_WIDTH + BOX_WIDTH / 2 for i, name in enumerate(participants)}
     height = FIRST_MSG + len(messages) * MSG_GAP
 
-    mxfile = ET.Element("mxfile", host="evaluacion-proyectos")
+    mxfile = ET.Element("mxfile", host="ariadna")
     diagram = ET.SubElement(mxfile, "diagram", name=spec["titulo"], id="secuencia-general")
     model = ET.SubElement(diagram, "mxGraphModel", grid="1", gridSize="10", page="1", pageWidth="1169", pageHeight="827")
     root = ET.SubElement(model, "root")

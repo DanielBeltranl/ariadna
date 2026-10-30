@@ -30,3 +30,4 @@ Route evidence: all inline — units are sequential and share conventions; no Wr
 - L4: `${CLAUDE_SKILL_DIR}` verified in official skills docs; substituted only in SKILL.md, so specs use `<SKILL_DIR>`.
 - L5: E2E found cp1252 console garbling accents in Git Bash → stdout/stderr forced to UTF-8, card also saved to `tarjeta-coe.txt`, transcript JSON uses ASCII escapes. Suite: 30 tests OK.
 - L6: Pending: open outputs in Word/Excel/draw.io by a human (not possible here); real `/evaluacion-proyectos` run after installing the skill.
+- L7 (2026-10-30, user): "ariadna me gusta mas" -> skill renamed to `/ariadna` (install folder `~/.claude/skills/ariadna`). The proposal md keeps the old name as historical record.

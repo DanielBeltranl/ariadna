@@ -14,7 +14,7 @@
       "p": "Diez preguntas para conducir una reunión de levantamiento de **20 a 40 minutos**. No es un cuestionario rígido: cada pregunta abre una conversación, y la columna **Qué rescatar** indica lo que conviene que quede dicho antes de pasar a la siguiente."
     },
     {
-      "p": "Con estas respuestas, el pipeline **/evaluacion-proyectos** genera la propuesta, los casos de uso, las historias de usuario, el diagrama de secuencia y la valorización CoE. Lo que no se responda quedará como **[PENDIENTE]**, y está bien: algo es mejor que nada."
+      "p": "Con estas respuestas, el pipeline **/ariadna** genera la propuesta, los casos de uso, las historias de usuario, el diagrama de secuencia y la valorización CoE. Lo que no se responda quedará como **[PENDIENTE]**, y está bien: algo es mejor que nada."
     },
     {
       "note": "el pipeline solo conoce lo que se dice en voz alta. Un número que se muestra en pantalla pero no se dice no queda en la transcripción."

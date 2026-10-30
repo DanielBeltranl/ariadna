@@ -1,4 +1,6 @@
-# evaluacion-proyectos
+# Ariadna
+
+> Como el hilo que Ariadna le dio a Teseo para salir del laberinto: de una reunión enredada, saca el hilo de la iniciativa.
 
 Convierte la transcripción de una reunión de levantamiento técnico en la documentación inicial de una iniciativa de automatización, lista para revisar por el CoE:
 
@@ -12,7 +14,7 @@ Convierte la transcripción de una reunión de levantamiento técnico en la docu
 
 > El resultado es una **estructura inicial**: debe ser revisada y validada antes de darse por finalizada.
 
-Es una *skill* de Claude Code: se usa escribiendo `/evaluacion-proyectos` en el chat.
+Es una *skill* de Claude Code: se usa escribiendo `/ariadna` en el chat.
 
 ---
 
@@ -21,28 +23,28 @@ Es una *skill* de Claude Code: se usa escribiendo `/evaluacion-proyectos` en el 
 Requiere [Claude Code](https://claude.com/claude-code) y Git. En PowerShell:
 
 ```powershell
-git clone <url-del-repo> "$HOME\.claude\skills\evaluacion-proyectos"
+git clone <url-del-repo> "$HOME\.claude\skills\ariadna"
 ```
 
-Abre una sesión nueva de Claude Code y escribe `/evaluacion-proyectos`. Listo.
+Abre una sesión nueva de Claude Code y escribe `/ariadna`. Listo.
 
 **Python:** el pipeline necesita Python 3.10+ y `openpyxl`. No hace falta instalarlos antes: al primer uso el agente los verifica y, si faltan, **ofrece instalarlos** (Python con `winget` para tu usuario, sin permisos de administrador; `openpyxl` con `pip`). Nunca instala nada sin tu confirmación.
 
 Si `winget` está bloqueado en tu equipo, instala Python manualmente desde [python.org](https://www.python.org/downloads/) marcando **"Add python.exe to PATH"**, reabre Claude Code y ejecuta:
 
 ```powershell
-python -m pip install --user -r "$HOME\.claude\skills\evaluacion-proyectos\requirements.txt"
+python -m pip install --user -r "$HOME\.claude\skills\ariadna\requirements.txt"
 ```
 
 ### Actualizar
 
 ```powershell
-git -C "$HOME\.claude\skills\evaluacion-proyectos" pull
+git -C "$HOME\.claude\skills\ariadna" pull
 ```
 
 ### Desinstalar
 
-Borra la carpeta `$HOME\.claude\skills\evaluacion-proyectos`.
+Borra la carpeta `$HOME\.claude\skills\ariadna`.
 
 ---
 
@@ -53,9 +55,9 @@ Borra la carpeta `$HOME\.claude\skills\evaluacion-proyectos`.
 1. Abre Claude Code **en la carpeta donde quieres los documentos** (por ejemplo, la carpeta del proyecto o una de trabajo).
 2. Escribe:
    ```text
-   /evaluacion-proyectos
+   /ariadna
    ```
-   También acepta el nombre de la reunión o la ruta de la transcripción: `/evaluacion-proyectos Checklist sistema SAG`. O simplemente pídelo en lenguaje natural: *"evalúa la reunión del sistema SAG"*.
+   También acepta el nombre de la reunión o la ruta de la transcripción: `/ariadna Checklist sistema SAG`. O simplemente pídelo en lenguaje natural: *"evalúa la reunión del sistema SAG"*.
 3. Responde lo que el agente pregunta. Los documentos quedan en `docs\proyectos\<código>\`.
 
 ### Qué te va a preguntar
@@ -104,7 +106,7 @@ Prioridad: ≥3.5 Alta | 2.5–3.4 Media | <2.5 Baja
 
 | Síntoma | Solución |
 | :--- | :--- |
-| `/evaluacion-proyectos` no aparece | Verifica que exista `$HOME\.claude\skills\evaluacion-proyectos\SKILL.md` y abre una sesión nueva de Claude Code |
+| `/ariadna` no aparece | Verifica que exista `$HOME\.claude\skills\ariadna\SKILL.md` y abre una sesión nueva de Claude Code |
 | "No se pudo guardar … ¿está abierto en Excel o Word?" | Cierra el archivo en Excel/Word y vuelve a pedir la generación |
 | La tabla de contenido del `.docx` sale vacía | En Word: clic derecho sobre la tabla → **Actualizar campos** |
 | `python` abre la Microsoft Store | Python no está instalado: acepta la instalación asistida o instálalo desde python.org |
