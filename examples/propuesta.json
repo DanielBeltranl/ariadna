@@ -1,0 +1,38 @@
+{
+  "iniciativa": "19-N1-COM-CL | Gestión Alerta Enlaces caídos | MON",
+  "torre": "N1 Comunicaciones",
+  "solicitante": "Mesa de Monitoreo",
+  "sistemas": ["Zabbix", "Remedy"],
+  "contexto": "Hoy el operador N1 revisa manualmente las alertas de enlaces caídos en Zabbix, valida el estado del enlace y abre un ticket en Remedy. Esta tarea asegura que las caídas de comunicación de los clientes se escalen a tiempo para cumplir el SLA.",
+  "objetivo_general": "Automatizar la detección y el registro de enlaces caídos para reducir el tiempo de escalamiento.",
+  "objetivos_especificos": [
+    "Detectar automáticamente las alertas de enlace caído en Zabbix.",
+    "Crear el ticket en Remedy con los datos del enlace afectado."
+  ],
+  "alcance": [
+    {"id": "UC-01", "titulo": "Detección de enlace caído", "acotacion": "Lectura de la API de Zabbix con usuario de solo lectura"},
+    {"id": "UC-02", "titulo": "Creación de ticket", "acotacion": "Requiere usuario de integración en Remedy"}
+  ],
+  "fuera_de_alcance": [
+    {"id": "UC-03", "titulo": "Reinicio remoto del enlace", "justificacion": "Requiere acceso privilegiado a equipos del cliente"}
+  ],
+  "observaciones": [
+    "Validar la apertura del puerto 443 hacia la API de Zabbix.",
+    "Canal de notificación ante fallas: [PENDIENTE]."
+  ],
+  "evaluacion_coe": {
+    "volumen_mensual": 600,
+    "tiempo_minutos_por_ejecucion": 10,
+    "pct_automatizacion": 80,
+    "impacto": 4,
+    "impacto_justificacion": "Alto: gestión de incidentes prioritarios que afectan el SLA de clientes.",
+    "riesgo": 3,
+    "riesgo_justificacion": "Moderado: tarea repetitiva propensa a errores de digitación.",
+    "escalabilidad": 3,
+    "escalabilidad_justificacion": "Multi-equipo: aplicable a otras torres de monitoreo del país.",
+    "alineamiento": null,
+    "alineamiento_justificacion": "",
+    "complejidad": 2,
+    "complejidad_justificacion": "Baja: dos integraciones vía API documentada."
+  }
+}
