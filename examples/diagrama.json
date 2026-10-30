@@ -1,0 +1,12 @@
+{
+  "titulo": "Gestión Alerta Enlaces caídos",
+  "participantes": ["Sistema de automatización", "Zabbix", "Remedy", "Operador N1"],
+  "mensajes": [
+    {"de": "Sistema de automatización", "a": "Zabbix", "texto": "Consulta alertas activas"},
+    {"de": "Zabbix", "a": "Sistema de automatización", "texto": "Alertas de enlace caído", "respuesta": true},
+    {"de": "Sistema de automatización", "a": "Sistema de automatización", "texto": "Descarta alertas ya registradas"},
+    {"de": "Sistema de automatización", "a": "Remedy", "texto": "Crea ticket"},
+    {"de": "Remedy", "a": "Sistema de automatización", "texto": "Número de ticket", "respuesta": true},
+    {"de": "Sistema de automatización", "a": "Operador N1", "texto": "Notifica ticket creado"}
+  ]
+}
