@@ -34,7 +34,7 @@ En el mito griego, el rey Minos tenía al Minotauro encerrado en un laberinto de
 Requiere [Claude Code](https://claude.com/claude-code) y Git. En PowerShell:
 
 ```powershell
-git clone <url-del-repo> "$HOME\.claude\skills\ariadna"
+git clone https://github.com/DanielBeltranl/ariadna.git "$HOME\.claude\skills\ariadna"
 ```
 
 Abre una sesión nueva de Claude Code y escribe `/ariadna`. Listo.
