@@ -10,12 +10,17 @@ def fail(message):
     sys.exit(1)
 
 
+def utf8_console():
+    # The Windows code page (cp1252) garbles accents in Git Bash and cannot print every character.
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
+
 def parse_args(description):
+    utf8_console()
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument("--json", required=True, help="Input JSON file")
     parser.add_argument("--output", required=True, help="Output file path")
-    # LLM-written text may hold characters the Windows console code page cannot print.
-    sys.stdout.reconfigure(errors="replace")
     return parser.parse_args()
 
 

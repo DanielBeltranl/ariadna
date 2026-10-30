@@ -1,6 +1,6 @@
 # Stage 4: Cierre y valorización
 
-1. Muestra la tarjeta CoE que imprimió `build_propuesta.py` **tal cual**, dentro de un bloque de código. No recalcules ni reformatees ningún número.
+1. Lee `docs/proyectos/<slug>/tarjeta-coe.txt` (la escribe `build_propuesta.py`) y muéstrala **tal cual**, dentro de un bloque de código. No recalcules ni reformatees ningún número.
 2. Lista los archivos generados:
    ```text
    Archivos generados en docs/proyectos/<slug>/:

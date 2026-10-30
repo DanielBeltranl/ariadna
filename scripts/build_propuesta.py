@@ -117,10 +117,14 @@ def main():
         manual_path.write_text(json.dumps(manual_spec, ensure_ascii=False), encoding="utf-8")
         save(lambda: build_manual.main(manual_path, args.output), args.output)
 
-    print(coe.render_card(
+    card = coe.render_card(
         spec["iniciativa"], spec.get("torre"), ", ".join(spec.get("sistemas") or []),
         [c["id"] for c in spec["alcance"]], [c["id"] for c in spec["fuera_de_alcance"]], result,
-    ))
+    )
+    # Also saved as a file: the agent shows it from there, safe from console encoding issues.
+    card_path = Path(args.output).with_name("tarjeta-coe.txt")
+    save(lambda: card_path.write_text(card + "\n", encoding="utf-8"), card_path)
+    print(card)
 
 
 if __name__ == "__main__":

@@ -31,5 +31,6 @@ python "<SKILL_DIR>/scripts/build_propuesta.py" --json "<propuesta.json>" --outp
 - `coe.py` calcula HH/mes, eficiencia por tramo, puntos por dimensión (complejidad resta), score final y prioridad (`≥3.5 Alta | 2.5–3.4 Media | <2.5 Baja`).
 - Una dimensión sin dato dice "No hay suficientes datos para establecer una calificación certera" y el score final queda `[PENDIENTE]`.
 - Secciones del documento: Contexto, Objetivos (general y específicos), Alcance, Fuera de alcance, Observaciones, Valorización CoE (incluye "Decisión tomada" y "Responsable definido" en blanco).
+- Imprime la tarjeta CoE y la guarda en `tarjeta-coe.txt` junto al `.docx` (UTF-8).
 - Usa la plantilla SONDA en `scripts/sonda/` (copia sin cambios del generador de la skill `sonda-user-manual`).
 - Errores (código 1): campo obligatorio ausente, score fuera de 1–5, número inválido, archivo abierto en Word.

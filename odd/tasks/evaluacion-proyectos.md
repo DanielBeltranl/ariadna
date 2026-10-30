@@ -13,12 +13,13 @@ Branch: `feat/evaluacion-proyectos` · Delivery: single-pr (new repo, no remote 
 - S8. CoE: official rubric and formula; missing data → "No hay suficientes datos para establecer una calificación certera" and final score `[PENDIENTE]`; all arithmetic in Python.
 
 ## Tasks
-- [ ] T1 S8 — `scripts/coe.py` + tests · inline
-- [ ] T2 S4,S5,S8 — `scripts/build_propuesta.py` reusing the SONDA builder/template + tests · inline
-- [ ] T3 S4,S6 — `scripts/build_casos_uso.py`, `scripts/build_historias.py` + tests · inline
-- [ ] T4 S4,S7 — `scripts/build_diagrama.py` + tests · inline
-- [ ] T5 S1-S3 — `SKILL.md`, `templates/rubrica_coe.md`, 8 md specs, `requirements.txt`, README · inline
-- [ ] T6 all — end-to-end run with sample JSON, open-check outputs · inline
+- [x] T1 S8 — `scripts/coe.py` + tests · inline · db10282 (RED observed: import error → GREEN 10 tests)
+- [x] T2 S4,S5,S8 — `scripts/build_propuesta.py` reusing the SONDA builder/template + tests · inline · (RED 4 fail+1 err → GREEN)
+- [x] T3 S4,S6 — `scripts/build_casos_uso.py`, `scripts/build_historias.py` + tests · inline · fc8f479 (tests written with code, no separate RED)
+- [x] T4 S4,S7 — `scripts/build_diagrama.py` + tests · inline · ada26fd (tests written with code, no separate RED)
+- [x] T4b S2 — `scripts/extract_transcript.py` (.txt/.vtt/.docx, latest-in-folder, confirmation data) · inline · 8a77f90 (RED 6 fail → GREEN)
+- [x] T5 S1-S3 — `SKILL.md`, `templates/rubrica_coe.md`, 8 md specs, `requirements.txt`, README · inline
+- [x] T6 all — end-to-end run with example JSON: 4 files generated, docx XML parts well-formed; found and fixed console encoding (cp1252 garbled accents) · inline
 
 Route evidence: all inline — units are sequential and share conventions; no Writer trigger (no parallel independent units launched together, context well below backstop).
 
@@ -26,3 +27,6 @@ Route evidence: all inline — units are sequential and share conventions; no Wr
 - L1 (2026-10-30, user): "Estamos para que con odd ejecutes todo? parece harto, pero creo que se puede hacer en una run porque es mas texto que otra cosa" → "Si, inicializa".
 - L2: Discovery: SONDA `build_manual.py` is stdlib-only (zipfile), so `python-docx` is not needed; only `openpyxl`. pytest absent → unittest.
 - L3: Repo initialized at baseline `fddf9f4` on `main`; work on `feat/evaluacion-proyectos`.
+- L4: `${CLAUDE_SKILL_DIR}` verified in official skills docs; substituted only in SKILL.md, so specs use `<SKILL_DIR>`.
+- L5: E2E found cp1252 console garbling accents in Git Bash → stdout/stderr forced to UTF-8, card also saved to `tarjeta-coe.txt`, transcript JSON uses ASCII escapes. Suite: 30 tests OK.
+- L6: Pending: open outputs in Word/Excel/draw.io by a human (not possible here); real `/evaluacion-proyectos` run after installing the skill.

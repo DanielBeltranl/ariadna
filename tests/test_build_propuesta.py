@@ -53,6 +53,13 @@ class BuildPropuestaTest(unittest.TestCase):
         self.assertIn("SCORE FINAL CoE: 2.85  ==>  PRIORIDAD: Media", proc.stdout)
         self.assertIn("Casos Viables Asumidos: UC-01, UC-02", proc.stdout)
 
+    def test_saves_card_next_to_output(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            proc, out = run(EXAMPLE, tmp)
+            card = (out.parent / "tarjeta-coe.txt").read_text(encoding="utf-8")
+        self.assertEqual(card.strip(), proc.stdout.split("\n", 1)[1].strip())
+        self.assertIn("VALORIZACIÓN INICIAL CoE", card)
+
     def test_rejects_missing_required_field(self):
         spec = {k: v for k, v in EXAMPLE.items() if k != "objetivo_general"}
         with tempfile.TemporaryDirectory() as tmp:

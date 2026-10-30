@@ -17,7 +17,7 @@ from datetime import datetime
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
-from spec_io import fail
+from spec_io import fail, utf8_console
 
 EXTENSIONS = {".txt", ".vtt", ".docx"}
 W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
@@ -86,8 +86,8 @@ def main():
     parser = argparse.ArgumentParser(description="Extrae una transcripción de Teams a texto plano")
     parser.add_argument("--input", required=True, help="Archivo de transcripción o carpeta donde buscar la más reciente")
     parser.add_argument("--output", help="Ruta del .txt de salida")
+    utf8_console()
     args = parser.parse_args()
-    sys.stdout.reconfigure(errors="replace")
 
     path = resolve(args.input)
     suffix = path.suffix.lower()
@@ -116,7 +116,7 @@ def main():
         "duracion_min": math.ceil(last / 60) if last else None,
         "participantes": participants,
         "tema": spoken[:TOPIC_CHARS],
-    }, ensure_ascii=False))
+    }))  # ASCII escapes keep names intact whatever the console encoding
 
 
 if __name__ == "__main__":
