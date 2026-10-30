@@ -1,5 +1,13 @@
 # Ariadna
 
+![Claude Code](https://img.shields.io/badge/Claude_Code-skill-D97757?style=for-the-badge&logo=claude&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Windows](https://img.shields.io/badge/Windows-0078D4?style=for-the-badge&logo=windows11&logoColor=white)
+![Microsoft Teams](https://img.shields.io/badge/Microsoft_Teams-6264A7?style=for-the-badge&logo=microsoftteams&logoColor=white)
+![Word](https://img.shields.io/badge/Word-.docx-2B579A?style=for-the-badge&logo=microsoftword&logoColor=white)
+![Excel](https://img.shields.io/badge/Excel-openpyxl-217346?style=for-the-badge&logo=microsoftexcel&logoColor=white)
+![draw.io](https://img.shields.io/badge/draw.io-diagrama-F08705?style=for-the-badge&logo=diagramsdotnet&logoColor=white)
+
 > Como el hilo que Ariadna le dio a Teseo para salir del laberinto: de una reunión enredada, saca el hilo de la iniciativa.
 
 Convierte la transcripción de una reunión de levantamiento técnico en la documentación inicial de una iniciativa de automatización, lista para revisar por el CoE:
