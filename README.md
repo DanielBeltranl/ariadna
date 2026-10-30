@@ -48,6 +48,8 @@ Borra la carpeta `$HOME\.claude\skills\evaluacion-proyectos`.
 
 ## Uso
 
+> **Antes de la reunión:** usa la [Guía de Reunión de Levantamiento](docs/guia-reunion/Guia%20de%20Reunion%20de%20Levantamiento.pdf). Ordena las preguntas para que la transcripción traiga todo lo que el pipeline necesita, y marca las mínimas para calcular el score CoE.
+
 1. Abre Claude Code **en la carpeta donde quieres los documentos** (por ejemplo, la carpeta del proyecto o una de trabajo).
 2. Escribe:
    ```text
