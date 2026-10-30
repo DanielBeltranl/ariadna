@@ -1,151 +1,205 @@
 {
   "title": "Guía de Reunión de Levantamiento",
-  "subtitle": "Batería de preguntas para iniciativas de automatización CoE",
-  "version": "1.0",
+  "subtitle": "10 preguntas guía para iniciativas de automatización CoE",
+  "version": "1.1",
   "version_date": "30/10/2026",
   "author": "[Ingresar autor]",
-  "change": "Creación del documento",
+  "change": "Versión reducida a 10 preguntas guía",
   "change_date": "30-10-2026",
   "body": [
-    {"h1": "Objetivo"},
-    {"h2": "Propósito del documento"},
-    {"p": "Esta guía ordena las preguntas de una reunión de levantamiento técnico para obtener, en una sola conversación, la información que necesita el pipeline **/evaluacion-proyectos** para generar la propuesta, los casos de uso, las historias de usuario, el diagrama de secuencia y la valorización CoE."},
-    {"p": "No es un guion rígido: es una lista de verificación. Lo que no se pueda responder en la reunión quedará marcado como **[PENDIENTE]** en los documentos generados."},
-    {"h2": "Cómo usar esta guía"},
-    {"steps": [
-      "Antes de la reunión, revisa la sección 2 y prepara la nomenclatura de la iniciativa.",
-      "Durante la reunión, recorre las secciones 3 a 11 en orden. Las preguntas marcadas con **(clave)** son las mínimas para que el CoE pueda calcular el score.",
-      "Al cierre, haz el resumen verbal de la sección 12 para que los datos queden explícitos en la transcripción.",
-      "Descarga la transcripción desde Teams y ejecuta /evaluacion-proyectos."
-    ]},
-    {"note": "el pipeline solo conoce lo que queda dicho en la transcripción. Un número que se muestra en pantalla pero no se dice en voz alta no existe para el pipeline."},
-
-    {"h1": "Antes de la reunión"},
-    {"table": {"header": ["N°", "Acción", "Por qué"], "widths": [0.6, 4.4, 3], "rows": [
-      ["2.1", "Activar la **grabación y transcripción** de Teams al iniciar la reunión.", "Sin transcripción no hay insumo para el pipeline."],
-      ["2.2", "Definir la nomenclatura: código, nombre y tag (ej. 19-N1-COM-CL | Gestión Alerta Enlaces caídos | MON). Usarla como asunto de la reunión.", "El pipeline la toma del asunto y nombra la carpeta y los archivos."],
-      ["2.3", "Invitar a quien **ejecuta hoy la tarea** manual, no solo a la jefatura.", "Es quien conoce los pasos reales, tiempos y excepciones."],
-      ["2.4", "Pedir que tengan a mano: ejemplos de alertas, correos, tickets o reportes del proceso.", "Permite describir entradas y salidas con precisión."]
-    ]}},
-
-    {"h1": "Contexto y situación actual"},
-    {"p": "Alimenta: **Contexto** de la propuesta e **Impacto en Negocio**."},
-    {"table": {"header": ["N°", "Pregunta", "Para qué sirve"], "widths": [0.6, 4.6, 2.8], "rows": [
-      ["3.1", "(clave) ¿Qué se hace hoy, paso a paso, y quién lo hace?", "Contexto y flujo actual"],
-      ["3.2", "¿Qué función cumple esta tarea en la operación? ¿Qué pasa si no se hace o se hace tarde?", "Contexto e impacto"],
-      ["3.3", "¿Qué torre o área lo solicita? ¿Quién es el solicitante?", "Torre / solicitante"],
-      ["3.4", "¿Afecta directamente a clientes, al SLA o a la continuidad de un servicio crítico?", "Impacto en Negocio"],
-      ["3.5", "¿Hubo incidentes, reclamos o multas por errores o demoras en esta tarea?", "Impacto y riesgo"]
-    ]}},
-
-    {"h1": "Problema y objetivos"},
-    {"p": "Alimenta: **Objetivo general** y **Objetivos específicos**."},
-    {"table": {"header": ["N°", "Pregunta", "Para qué sirve"], "widths": [0.6, 4.6, 2.8], "rows": [
-      ["4.1", "(clave) ¿Cuál es el principal problema del proceso actual?", "Objetivo general"],
-      ["4.2", "¿Qué resultado concreto esperan de la automatización?", "Objetivo general"],
-      ["4.3", "¿Qué partes del proceso esperan que haga el sistema solo y cuáles seguirán siendo manuales?", "Objetivos específicos y % de automatización"],
-      ["4.4", "¿Cómo sabremos que la automatización funciona? ¿Qué indicador mirarían?", "Criterios de aceptación"]
-    ]}},
-
-    {"h1": "Volumen y tiempos"},
-    {"p": "Alimenta: **Eficiencia Operativa** (horas hombre ahorradas). Pide que los números se digan en voz alta."},
-    {"table": {"header": ["N°", "Pregunta", "Para qué sirve"], "widths": [0.6, 4.6, 2.8], "rows": [
-      ["5.1", "(clave) ¿Cuántas veces al mes se ejecuta la tarea? (eventos, alertas, tickets, solicitudes)", "Volumen mensual"],
-      ["5.2", "(clave) ¿Cuántos minutos toma cada ejecución manual, de principio a fin?", "Minutos por ejecución"],
-      ["5.3", "(clave) ¿Qué porcentaje de esas ejecuciones podría resolverse sin intervención humana?", "% de automatización"],
-      ["5.4", "¿Hay horarios o turnos especiales (7x24, fines de semana, peaks)?", "Contexto e impacto"],
-      ["5.5", "¿Cuántas personas participan hoy en la tarea?", "Contexto"]
-    ]}},
-
-    {"h1": "Flujo, actores y sistemas"},
-    {"p": "Alimenta: **Casos de uso** (actor, precondiciones, pasos, resultado) y **Diagrama de secuencia**."},
-    {"table": {"header": ["N°", "Pregunta", "Para qué sirve"], "widths": [0.6, 4.6, 2.8], "rows": [
-      ["6.1", "(clave) ¿Qué sistemas intervienen? (monitoreo, ticketing, correo, bases de datos, servidores)", "Sistemas y participantes del diagrama"],
-      ["6.2", "¿Qué dispara el proceso? (una alerta, un correo, una hora fija, una solicitud)", "Precondiciones y primer mensaje del diagrama"],
-      ["6.3", "Para cada paso: ¿quién lo hace, en qué sistema y qué obtiene?", "Flujo de pasos y mensajes del diagrama"],
-      ["6.4", "¿Qué decisiones se toman en el camino? ¿Con qué regla?", "Flujo de pasos y criterios"],
-      ["6.5", "¿Cuál es el resultado final esperado y dónde queda registrado?", "Resultado esperado"],
-      ["6.6", "¿Qué excepciones o casos raros ocurren? ¿Cómo se resuelven hoy?", "Casos de uso adicionales o fuera de alcance"]
-    ]}},
-
-    {"h1": "Alcance de la fase"},
-    {"p": "Alimenta: **Alcance**, **Fuera de alcance** y la puerta de viabilidad del pipeline."},
-    {"table": {"header": ["N°", "Pregunta", "Para qué sirve"], "widths": [0.6, 4.6, 2.8], "rows": [
-      ["7.1", "(clave) De todo lo conversado, ¿qué es indispensable para una primera fase?", "Casos viables"],
-      ["7.2", "¿Qué puede esperar a una fase posterior?", "Fuera de alcance"],
-      ["7.3", "¿Hay algo que definitivamente no se debe automatizar? ¿Por qué?", "Fuera de alcance con justificación"],
-      ["7.4", "¿Existe una fecha o hito que condicione la entrega?", "Observaciones"]
-    ]}},
-
-    {"h1": "Criterios de aceptación"},
-    {"p": "Alimenta: **Historias de usuario** (Como <rol>, quiero <acción> para <beneficio>) y sus criterios."},
-    {"table": {"header": ["N°", "Pregunta", "Para qué sirve"], "widths": [0.6, 4.6, 2.8], "rows": [
-      ["8.1", "¿Quiénes usarán o recibirán el resultado? (operador N1, N2, cliente, jefatura)", "Rol de cada historia"],
-      ["8.2", "¿Qué necesita ver o recibir cada uno, y para qué?", "Acción y beneficio"],
-      ["8.3", "¿Qué datos debe contener el resultado? (campos del ticket, del correo, del reporte)", "Criterios de aceptación"],
-      ["8.4", "¿En cuánto tiempo debe ocurrir? ¿Con qué frecuencia?", "Criterios de aceptación"],
-      ["8.5", "¿Qué no debe pasar nunca? (duplicados, datos incompletos, envíos fuera de horario)", "Criterios de aceptación"]
-    ]}},
-
-    {"h1": "Accesos, conectividad y prerrequisitos"},
-    {"p": "Alimenta: **Observaciones**, acotación técnica de cada caso y **Complejidad Técnica**."},
-    {"table": {"header": ["N°", "Pregunta", "Para qué sirve"], "widths": [0.6, 4.6, 2.8], "rows": [
-      ["9.1", "(clave) ¿Los sistemas tienen API, base de datos, CLI o solo interfaz gráfica?", "Complejidad y acotación técnica"],
-      ["9.2", "¿Qué usuarios o credenciales de servicio se necesitan? ¿Quién los otorga?", "Prerrequisitos de acceso"],
-      ["9.3", "¿Se requieren permisos elevados (root, sudo, administrador)?", "Riesgo y complejidad"],
-      ["9.4", "¿Qué puertos, firewalls o VPN hay entre los sistemas?", "Prerrequisitos de conectividad"],
-      ["9.5", "¿Dónde se ejecutaría la automatización? (servidor existente, nuevo, nube)", "Prerrequisitos"],
-      ["9.6", "¿Hay ambiente de pruebas? ¿Cómo validamos sin afectar producción?", "Criterio de pruebas"]
-    ]}},
-
-    {"h1": "Riesgo y manejo de fallas"},
-    {"p": "Alimenta: **Riesgo Operativo** (riesgo de NO automatizar) y la gestión de contingencia."},
-    {"table": {"header": ["N°", "Pregunta", "Para qué sirve"], "widths": [0.6, 4.6, 2.8], "rows": [
-      ["10.1", "(clave) ¿Qué errores humanos ocurren hoy en esta tarea? ¿Con qué frecuencia?", "Riesgo Operativo"],
-      ["10.2", "¿Tiene impacto en cumplimiento, auditoría o contratos?", "Riesgo Operativo"],
-      ["10.3", "¿Depende de una o pocas personas clave?", "Riesgo Operativo"],
-      ["10.4", "Si la automatización falla, ¿qué debe pasar? ¿Volver al proceso manual?", "Contingencia"],
-      ["10.5", "¿A quién y por qué canal se notifica un error? (correo, Teams, ticket)", "Canal de notificación"]
-    ]}},
-
-    {"h1": "Escalabilidad y alineamiento"},
-    {"p": "Alimenta: **Escalabilidad / Reutilización** y **Alineamiento Estratégico**."},
-    {"table": {"header": ["N°", "Pregunta", "Para qué sirve"], "widths": [0.6, 4.6, 2.8], "rows": [
-      ["11.1", "(clave) ¿Este mismo proceso existe en otros equipos, países o filiales?", "Escalabilidad"],
-      ["11.2", "¿Podría convertirse en un componente estándar o reutilizable?", "Escalabilidad"],
-      ["11.3", "(clave) ¿Está en el roadmap de TI o apoya alguna iniciativa regional? (cloud, DevOps, seguridad, AIOps)", "Alineamiento Estratégico"],
-      ["11.4", "¿Existe otra iniciativa similar en curso? ¿Cuál?", "Evitar duplicidad"]
-    ]}},
-
-    {"h1": "Cierre de la reunión"},
-    {"p": "Antes de terminar, el facilitador resume en voz alta para que quede en la transcripción:"},
-    {"bullets": [
-      "Nomenclatura de la iniciativa.",
-      "Volumen mensual, minutos por ejecución y porcentaje automatizable.",
-      "Sistemas involucrados y casos de uso de la primera fase.",
-      "Accesos o prerrequisitos pendientes y quién los gestiona.",
-      "Próximos pasos y responsables."
-    ]},
-    {"example": "\"Resumiendo: son unas 600 alertas al mes, cada una toma 10 minutos y se podría automatizar el 80 %. Intervienen Zabbix y Remedy. En esta fase entran la detección y la creación del ticket; el reinicio remoto queda fuera.\""},
-
-    {"h1": "Anexos"},
-    {"h2": "Datos mínimos para el score CoE"},
-    {"p": "Sin estos datos, la dimensión correspondiente queda como \"No hay suficientes datos para establecer una calificación certera\" y el score final queda pendiente."},
-    {"table": {"header": ["Dimensión", "Peso", "Preguntas clave"], "widths": [3, 1, 4], "rows": [
-      ["Impacto en Negocio", "30 %", "3.1, 3.4"],
-      ["Eficiencia Operativa", "20 %", "5.1, 5.2, 5.3"],
-      ["Riesgo Operativo", "15 %", "10.1"],
-      ["Escalabilidad / Reutilización", "10 %", "11.1"],
-      ["Alineamiento Estratégico", "10 %", "11.3"],
-      ["Complejidad Técnica (resta)", "15 %", "6.1, 9.1"]
-    ]}},
-    {"h2": "Glosario de términos"},
-    {"glossary": [
-      ["Caso de uso", "Interacción concreta entre un actor y el sistema, con precondiciones, pasos y un resultado esperado."],
-      ["Historia de usuario", "Necesidad expresada como \"Como <rol>, quiero <acción> para <beneficio>\", con criterios de aceptación."],
-      ["HH", "Horas hombre: tiempo de trabajo de una persona."],
-      ["Score CoE", "Puntaje ponderado de 6 dimensiones que define la prioridad de la iniciativa."],
-      ["Transcripción", "Texto de la reunión generado por Teams, que es el insumo del pipeline."]
-    ]}
+    {
+      "h1": "Cómo usar esta guía"
+    },
+    {
+      "p": "Diez preguntas para conducir una reunión de levantamiento de **20 a 40 minutos**. No es un cuestionario rígido: cada pregunta abre una conversación, y la columna **Qué rescatar** indica lo que conviene que quede dicho antes de pasar a la siguiente."
+    },
+    {
+      "p": "Con estas respuestas, el pipeline **/evaluacion-proyectos** genera la propuesta, los casos de uso, las historias de usuario, el diagrama de secuencia y la valorización CoE. Lo que no se responda quedará como **[PENDIENTE]**, y está bien: algo es mejor que nada."
+    },
+    {
+      "note": "el pipeline solo conoce lo que se dice en voz alta. Un número que se muestra en pantalla pero no se dice no queda en la transcripción."
+    },
+    {
+      "h1": "Antes de la reunión"
+    },
+    {
+      "bullets": [
+        "**Activar la transcripción** de Teams al iniciar. Sin transcripción no hay insumo.",
+        "**Poner la nomenclatura en el asunto** de la reunión (ej. 19-N1-COM-CL | Gestión Alerta Enlaces caídos | MON). El pipeline la toma de ahí.",
+        "**Invitar a quien ejecuta hoy la tarea**, no solo a la jefatura: es quien conoce los pasos y los tiempos reales."
+      ]
+    },
+    {
+      "h1": "Las 10 preguntas"
+    },
+    {
+      "h2": "Situación actual (≈ 10 min)"
+    },
+    {
+      "table": {
+        "header": [
+          "N°",
+          "Pregunta guía",
+          "Qué rescatar"
+        ],
+        "widths": [
+          0.5,
+          3.8,
+          3.7
+        ],
+        "rows": [
+          [
+            "1",
+            "¿Qué se hace hoy, quién lo hace y qué función cumple en la operación?",
+            "Pasos actuales, responsable, torre y solicitante."
+          ],
+          [
+            "2",
+            "¿Qué problema genera hoy y qué pasa si no se hace o se hace tarde?",
+            "Errores humanos, impacto en clientes o SLA, multas, dependencia de personas clave."
+          ],
+          [
+            "3",
+            "¿Cuántas veces al mes ocurre, cuánto demora cada vez y qué parte podría hacerse sola?",
+            "Tres números dichos en voz alta: **eventos/mes**, **minutos por vez** y **% automatizable**."
+          ]
+        ]
+      }
+    },
+    {
+      "h2": "El proceso y la solución (≈ 15 min)"
+    },
+    {
+      "table": {
+        "header": [
+          "N°",
+          "Pregunta guía",
+          "Qué rescatar"
+        ],
+        "widths": [
+          0.5,
+          3.8,
+          3.7
+        ],
+        "rows": [
+          [
+            "4",
+            "¿Qué sistemas intervienen y cómo se accede a ellos?",
+            "Nombre de cada sistema y si tiene API, base de datos, consola o solo pantalla."
+          ],
+          [
+            "5",
+            "¿Qué dispara el proceso y cuáles son los pasos hasta el resultado?",
+            "El disparador (alerta, correo, hora), los pasos en orden y dónde queda registrado el resultado."
+          ],
+          [
+            "6",
+            "¿Qué esperan que haga la automatización y qué queda fuera de esta primera fase?",
+            "Objetivo, lo indispensable para la fase 1 y lo que se posterga (con el porqué)."
+          ],
+          [
+            "7",
+            "¿Quién recibe el resultado y qué debe cumplir para darlo por bueno?",
+            "Quiénes lo usan, qué datos debe traer, en cuánto tiempo y qué no debe pasar nunca."
+          ]
+        ]
+      }
+    },
+    {
+      "h2": "Requisitos y proyección (≈ 8 min)"
+    },
+    {
+      "table": {
+        "header": [
+          "N°",
+          "Pregunta guía",
+          "Qué rescatar"
+        ],
+        "widths": [
+          0.5,
+          3.8,
+          3.7
+        ],
+        "rows": [
+          [
+            "8",
+            "¿Qué accesos, permisos o conexiones hay que pedir, y a quién?",
+            "Usuarios de servicio, permisos elevados, puertos o VPN y el responsable de gestionarlos."
+          ],
+          [
+            "9",
+            "Si la automatización falla, ¿qué debe pasar y a quién se avisa?",
+            "Plan de respaldo (volver a manual) y canal de aviso (correo, Teams, ticket)."
+          ],
+          [
+            "10",
+            "¿Este proceso existe en otros equipos o países, y apoya alguna iniciativa de TI?",
+            "Potencial de reutilización y relación con el roadmap (cloud, DevOps, seguridad, AIOps)."
+          ]
+        ]
+      }
+    },
+    {
+      "h1": "Cierre (≈ 3 min)"
+    },
+    {
+      "p": "Antes de cortar, resume en voz alta para que quede en la transcripción: los tres números de la pregunta 3, los sistemas, qué entra y qué queda fuera de la fase, y los accesos pendientes con su responsable."
+    },
+    {
+      "example": "\"Resumiendo: son unas 600 alertas al mes, cada una toma 10 minutos y se podría automatizar el 80 %. Intervienen Zabbix y Remedy. En esta fase entran la detección y la creación del ticket; el reinicio remoto queda fuera. Falta el usuario de Remedy, lo pide Juan.\""
+    },
+    {
+      "h1": "Anexo: qué pregunta alimenta cada parte"
+    },
+    {
+      "table": {
+        "header": [
+          "Documento o dimensión CoE",
+          "Preguntas"
+        ],
+        "widths": [
+          5.5,
+          2.5
+        ],
+        "rows": [
+          [
+            "Contexto de la propuesta",
+            "1, 2"
+          ],
+          [
+            "Objetivos, alcance y fuera de alcance",
+            "6"
+          ],
+          [
+            "Casos de uso y diagrama de secuencia",
+            "4, 5"
+          ],
+          [
+            "Historias de usuario y criterios de aceptación",
+            "7"
+          ],
+          [
+            "Observaciones y prerrequisitos",
+            "8, 9"
+          ],
+          [
+            "Impacto (30 %) y Riesgo (15 %)",
+            "1, 2"
+          ],
+          [
+            "Eficiencia Operativa (20 %)",
+            "3"
+          ],
+          [
+            "Escalabilidad y Alineamiento (10 % c/u)",
+            "10"
+          ],
+          [
+            "Complejidad Técnica (15 %, resta)",
+            "4, 8"
+          ]
+        ]
+      }
+    }
   ]
 }
