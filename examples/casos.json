@@ -1,0 +1,31 @@
+{
+  "iniciativa": "19-N1-COM-CL | Gestión Alerta Enlaces caídos | MON",
+  "casos": [
+    {
+      "modulo": "Detección",
+      "id": "UC-01",
+      "titulo": "Detección de enlace caído",
+      "actor": "Sistema de automatización",
+      "precondiciones": "Usuario de solo lectura habilitado en la API de Zabbix.",
+      "pasos": [
+        "El sistema consulta las alertas activas de Zabbix cada 5 minutos.",
+        "El sistema filtra las alertas de tipo enlace caído.",
+        "El sistema descarta las alertas ya registradas."
+      ],
+      "resultado": "Se obtiene la lista de enlaces caídos nuevos."
+    },
+    {
+      "modulo": "Registro de tickets",
+      "id": "UC-02",
+      "titulo": "Creación de ticket",
+      "actor": "Sistema de automatización",
+      "precondiciones": "Usuario de integración habilitado en Remedy.",
+      "pasos": [
+        "El sistema arma el ticket con los datos del enlace.",
+        "El sistema crea el ticket en Remedy.",
+        "El sistema registra el número de ticket asociado a la alerta."
+      ],
+      "resultado": "Cada enlace caído queda con su ticket creado sin intervención manual."
+    }
+  ]
+}

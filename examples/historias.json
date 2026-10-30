@@ -1,0 +1,27 @@
+{
+  "iniciativa": "19-N1-COM-CL | Gestión Alerta Enlaces caídos | MON",
+  "historias": [
+    {
+      "modulo": "Detección",
+      "nombre": "Detección automática de enlaces caídos",
+      "rol": "operador N1",
+      "accion": "que las caídas de enlace se detecten automáticamente",
+      "beneficio": "no revisar Zabbix manualmente",
+      "criterios": [
+        "El sistema debe consultar Zabbix al menos cada 5 minutos.",
+        "El sistema no debe registrar dos veces la misma alerta."
+      ]
+    },
+    {
+      "modulo": "Registro de tickets",
+      "nombre": "Ticket automático en Remedy",
+      "rol": "operador N1",
+      "accion": "que cada caída genere su ticket en Remedy",
+      "beneficio": "cumplir el SLA de escalamiento",
+      "criterios": [
+        "El ticket debe incluir el identificador del enlace y la hora de la caída.",
+        "Ante un error de Remedy, el sistema debe notificar al canal de soporte."
+      ]
+    }
+  ]
+}
