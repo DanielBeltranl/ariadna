@@ -15,7 +15,7 @@ git clone <url-del-repo> "$HOME\.claude\skills\evaluacion-proyectos"
 pip install -r "$HOME\.claude\skills\evaluacion-proyectos\requirements.txt"
 ```
 
-Requisitos: Python 3.10+ en el `PATH`. Opcional: conector "claude.ai Microsoft 365" autenticado (`/mcp`) para buscar la reunión en Teams.
+Requisitos: Python 3.10+ en el `PATH`; si falta, el agente ofrece instalarlo con `winget` (con tu confirmación). Opcional: conector "claude.ai Microsoft 365" autenticado (`/mcp`) para buscar la reunión en Teams.
 
 Actualizar: `git -C "$HOME\.claude\skills\evaluacion-proyectos" pull`.
 

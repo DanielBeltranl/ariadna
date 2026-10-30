@@ -28,11 +28,20 @@ Ejecuta:
 python -c "import sys; assert sys.version_info >= (3, 10), sys.version; import openpyxl; print('OK', sys.version.split()[0])"
 ```
 - Imprime `OK <versión>`: continúa.
-- `python` no se encuentra, o Windows responde "Python was not found" / abre la Microsoft Store: detén el pipeline e indica instalar Python 3.10+ desde python.org marcando "Add python.exe to PATH", y reabrir Claude Code.
-- `AssertionError`: la versión instalada es menor a 3.10; indica actualizar Python.
-- `ModuleNotFoundError: openpyxl`: indica ejecutar `pip install -r "${CLAUDE_SKILL_DIR}/requirements.txt"` y reintentar.
+- `python` no se encuentra, o Windows responde "Python was not found" / abre la Microsoft Store, o `AssertionError` (versión menor a 3.10): ofrece instalarlo y **espera la confirmación** antes de ejecutar nada:
+  ```text
+  No encontré Python 3.10 o superior, que este pipeline necesita.
+  ¿Quieres que lo instale ahora para tu usuario (sin permisos de administrador)? (sí / no)
+  ```
+  - Con "sí", ejecuta:
+    ```text
+    winget install --id Python.Python.3.12 -e --scope user --accept-package-agreements --accept-source-agreements
+    ```
+    La terminal actual no ve el PATH nuevo: repite la verificación con `"$LOCALAPPDATA/Programs/Python/Python312/python.exe"` en lugar de `python` y usa esa ruta en el resto del pipeline. Al cerrar, recuerda reabrir Claude Code para que `python` funcione solo.
+  - Si `winget` no existe o falla (equipos con políticas corporativas), o con "no": detén el pipeline e indica instalar Python 3.10+ desde https://www.python.org/downloads/ marcando "Add python.exe to PATH", reabrir Claude Code y volver a ejecutar el comando.
+- `ModuleNotFoundError: openpyxl`: ofrece instalarlo; con "sí", ejecuta `python -m pip install --user -r "${CLAUDE_SKILL_DIR}/requirements.txt"` y repite la verificación.
 
-No sigas con el Stage 1 hasta que la verificación imprima `OK`.
+No sigas con el Stage 1 hasta que la verificación imprima `OK`. Nunca instales nada sin el "sí" del usuario.
 
 ## Stages
 1. `specs/stage-1-ingesta.md` — origen de la transcripción, confirmación, nomenclatura y extracción de hechos.
