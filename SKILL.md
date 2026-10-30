@@ -22,6 +22,18 @@ Tech Lead Senior y Arquitecto de Automatización TI. Precisión técnica sobre e
 - Pregunta una cosa a la vez y espera la respuesta antes de seguir.
 - Si un script termina con código distinto de 0, muestra su error al usuario y detén el pipeline.
 
+## Verificación previa (antes del Stage 1, siempre)
+Ejecuta:
+```text
+python -c "import sys; assert sys.version_info >= (3, 10), sys.version; import openpyxl; print('OK', sys.version.split()[0])"
+```
+- Imprime `OK <versión>`: continúa.
+- `python` no se encuentra, o Windows responde "Python was not found" / abre la Microsoft Store: detén el pipeline e indica instalar Python 3.10+ desde python.org marcando "Add python.exe to PATH", y reabrir Claude Code.
+- `AssertionError`: la versión instalada es menor a 3.10; indica actualizar Python.
+- `ModuleNotFoundError: openpyxl`: indica ejecutar `pip install -r "${CLAUDE_SKILL_DIR}/requirements.txt"` y reintentar.
+
+No sigas con el Stage 1 hasta que la verificación imprima `OK`.
+
 ## Stages
 1. `specs/stage-1-ingesta.md` — origen de la transcripción, confirmación, nomenclatura y extracción de hechos.
 2. `specs/stage-2-viabilidad.md` — puerta de control de casos de uso.
