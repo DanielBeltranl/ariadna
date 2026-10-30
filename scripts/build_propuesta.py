@@ -27,14 +27,12 @@ REQUIRED = {
 }
 
 
-def initiative_name(initiative):
-    """'19-N1-COM-CL | Nombre | MON' -> 'Nombre'; any other text is used as is."""
-    parts = [p.strip() for p in initiative.split("|")]
-    return parts[1] if len(parts) >= 3 and parts[1] else initiative.strip()
-
-
 def show(value):
     return coe.PENDING if value is None else str(value)
+
+
+def dash(value):
+    return "-" if value is None else str(value)
 
 
 def body(spec, result):
@@ -71,9 +69,10 @@ def body(spec, result):
         {"bullets": spec["observaciones"]} if spec["observaciones"] else {"p": "Sin observaciones."},
         {"h1": "Valorización CoE"},
         {"p": "Evaluación preliminar según la rúbrica del CoE de Automatización TI. Es una estructura inicial que debe ser revisada por el comité."},
-        {"table": {"header": ["Dimensión", "Score (1-5)", "Peso", "Puntos", "Justificación"], "widths": [3, 1.3, 1, 1.2, 5],
+        # Narrow columns show "-" for missing values; the justification column explains why.
+        {"table": {"header": ["Dimensión", "Score (1-5)", "Peso", "Puntos", "Justificación"], "widths": [2.6, 1.6, 1, 1.2, 4.6],
                    "align": ["left", "center", "center", "center", "left"],
-                   "rows": [[d["nombre"], show(d["score"]), d["peso"], show(d["puntos"]), d["detalle"]]
+                   "rows": [[d["nombre"], dash(d["score"]), d["peso"], dash(d["puntos"]), d["detalle"]]
                             for d in result["dimensiones"]]}},
         {"table": {"header": ["Métrica", "Valor"], "widths": [2, 3], "rows": [
             ["Volumen mensual", f"{show(result['volumen_mensual'])} eventos/mes"],
@@ -103,7 +102,8 @@ def main():
         fail(str(err))
 
     manual_spec = {
-        "title": f"Propuesta Técnica: {initiative_name(spec['iniciativa'])}",
+        # The cover title box fits one line, so the long initiative name goes in the subtitle.
+        "title": "Propuesta Técnica",
         "subtitle": spec["iniciativa"],
         "version": "1.0",
         "version_date": today(),

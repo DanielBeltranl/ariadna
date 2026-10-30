@@ -36,13 +36,13 @@ def _row_height(values, widths):
     lines = 1
     for value, width in zip(values, widths):
         text_lines = str(value).split("\n")
-        lines = max(lines, sum(max(1, math.ceil(len(t) / (width * 1.1))) for t in text_lines))
-    return min(lines * LINE_HEIGHT, 409)
+        lines = max(lines, sum(max(1, math.ceil(len(t) / (width * 0.9))) for t in text_lines))
+    return min(lines * LINE_HEIGHT + 8, 409)  # +8: top/bottom padding so wrapped text does not touch the borders
 
 
 def write_table(ws, headers, rows, widths, header_fill, header_font_color, stripe_fills=None):
-    header_font = Font(name="Calibri", size=11, bold=True, color=header_font_color)
-    body_font = Font(name="Calibri", size=10, color="1F1F1F")
+    header_font = Font(name="Arial", size=11, bold=True, color=header_font_color)
+    body_font = Font(name="Arial", size=10, color="1F1F1F")
     for offset, width in enumerate(widths):
         ws.column_dimensions[ws.cell(row=1, column=FIRST_COL + offset).column_letter].width = width
     ws.column_dimensions["A"].width = 3
