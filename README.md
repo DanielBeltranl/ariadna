@@ -16,6 +16,17 @@ Convierte la transcripción de una reunión de levantamiento técnico en la docu
 
 Es una *skill* de Claude Code: se usa escribiendo `/ariadna` en el chat.
 
+### ¿Por qué Ariadna?
+
+En el mito griego, el rey Minos tenía al Minotauro encerrado en un laberinto del que nadie salía. Ariadna le dio a Teseo un ovillo de hilo: lo ató a la entrada, lo fue soltando al avanzar y, tras vencer al monstruo, lo siguió de vuelta hasta la salida.
+
+| Mito | Esta herramienta |
+| :--- | :--- |
+| El laberinto | La reunión: conversación cruzada, temas que van y vuelven, datos sueltos |
+| El Minotauro | El requerimiento real, escondido en el medio |
+| El hilo | La guía de preguntas y las 4 etapas del pipeline, que llevan paso a paso hasta los documentos |
+| Ariadna no enfrenta al Minotauro | La herramienta no decide: "Decisión tomada" y "Responsable" quedan para el comité |
+
 ---
 
 ## Instalación rápida
