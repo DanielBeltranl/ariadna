@@ -1,7 +1,7 @@
 ---
 name: ariadna
-description: Estructura una reunión de levantamiento técnico (transcripción de Teams) en propuesta SONDA (.docx), casos de uso y historias de usuario (.xlsx), diagrama de secuencia (.drawio) y valorización CoE. Usar cuando el usuario pida evaluar, estructurar o levantar una iniciativa/proyecto a partir de una reunión o transcripción.
-argument-hint: "[nombre de la reunión o ruta de la transcripción]"
+description: Estructura las fuentes de un levantamiento técnico (transcripción de Teams y cualquier documento de contexto: actas, especificaciones, planillas, PDF, imágenes) en propuesta SONDA (.docx), casos de uso y historias de usuario (.xlsx), diagrama de secuencia (.drawio) y valorización CoE. Usar cuando el usuario pida evaluar, estructurar o levantar una iniciativa/proyecto a partir de una reunión, transcripción o documentos.
+argument-hint: "[nombre de la reunión, o rutas de archivos o carpeta]"
 ---
 
 # Ariadna: evaluación de proyectos CoE
@@ -16,7 +16,7 @@ Tech Lead Senior y Arquitecto de Automatización TI. Precisión técnica sobre e
 ## Reglas obligatorias
 - Ejecuta los 4 stages en orden. Antes de cada stage, lee su archivo en `<SKILL_DIR>/specs/` y síguelo.
 - Nunca escribas código para generar `.docx`, `.xlsx` o `.drawio`, ni calcules scores, puntos u horas: arma el JSON e invoca los scripts de `<SKILL_DIR>/scripts/`.
-- No inventes datos, dependencias ni accesos. Lo que no está en la transcripción es `[PENDIENTE]`; un score sin evidencia va en `null`.
+- No inventes datos, dependencias ni accesos. Lo que no está en ninguna fuente es `[PENDIENTE]`; un score sin evidencia va en `null`.
 - Cada iniciativa vive en `docs/proyectos/<slug>/` del directorio de trabajo actual (nunca dentro de SKILL_DIR).
 - Rutas siempre entre comillas: pueden tener espacios.
 - Pregunta una cosa a la vez y espera la respuesta antes de seguir.
@@ -44,7 +44,7 @@ python -c "import sys; assert sys.version_info >= (3, 10), sys.version; import o
 No sigas con el Stage 1 hasta que la verificación imprima `OK`. Nunca instales nada sin el "sí" del usuario.
 
 ## Stages
-1. `specs/stage-1-ingesta.md` — origen de la transcripción, confirmación, nomenclatura y extracción de hechos.
+1. `specs/stage-1-ingesta.md` — origen de las fuentes (archivos o carpeta, cualquier formato), confirmación, nomenclatura y extracción de hechos.
 2. `specs/stage-2-viabilidad.md` — puerta de control de casos de uso.
 3. `specs/stage-3-generacion.md` — JSON + scripts (contratos en `specs/script-*.md`).
 4. `specs/stage-4-cierre.md` — tarjeta CoE y archivos generados.
