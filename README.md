@@ -10,7 +10,7 @@
 
 > Como el hilo que Ariadna le dio a Teseo para salir del laberinto: de una reunión enredada, saca el hilo de la iniciativa.
 
-Convierte la transcripción de una reunión de levantamiento técnico en la documentación inicial de una iniciativa de automatización, lista para revisar por el CoE:
+Convierte la transcripción de una reunión de levantamiento técnico, junto con cualquier documento de contexto que entregues, en la documentación inicial de una iniciativa de automatización, lista para revisar por el CoE:
 
 | Archivo | Contenido |
 | :--- | :--- |
@@ -76,7 +76,7 @@ Borra la carpeta `$HOME\.claude\skills\ariadna`.
    ```text
    /ariadna
    ```
-   También acepta el nombre de la reunión o la ruta de la transcripción: `/ariadna Checklist sistema SAG`. O simplemente pídelo en lenguaje natural: *"evalúa la reunión del sistema SAG"*.
+   También acepta el nombre de la reunión o las rutas de los archivos: `/ariadna Checklist sistema SAG`. O simplemente pídelo en lenguaje natural: *"evalúa la reunión del sistema SAG"*.
 3. Responde lo que el agente pregunta. Los documentos quedan en `docs\proyectos\<código>\`.
 
 ### Qué te va a preguntar
@@ -84,22 +84,28 @@ Borra la carpeta `$HOME\.claude\skills\ariadna`.
 | Paso | Pregunta | Qué responder |
 | :--- | :--- | :--- |
 | 0 | (Solo si falta) ¿Instalo Python / openpyxl? | `sí` o `no` |
-| 1 | ¿De dónde tomo la transcripción? | `1` (buscar en Teams) o `2` (archivo) |
-| 1 | Confirma la reunión o el archivo encontrado | `sí` o `no` |
+| 1 | ¿De dónde tomo la información? | `1` (buscar en Teams) o `2` (archivos o carpeta) |
+| 1 | Confirma la reunión o la lista de fuentes | `sí` o `no` |
 | 1 | Código y nombre formal de la iniciativa | `19-N1-COM-CL \| Gestión Alerta Enlaces caídos \| MON` |
 | 2 | ¿Qué casos de uso son viables en esta fase? | Números separados por coma (`1, 3`) o `todos` |
 
 Al final muestra la tarjeta de valorización CoE y la lista de archivos generados.
 
-### Cómo entregar la transcripción
+### Cómo entregar las fuentes
 
-Descárgala desde Teams (pestaña **Transcripción** de la reunión → Descargar, en `.docx` o `.vtt`). Luego, en el paso 1, elige la opción `2` y entrega cualquiera de estas:
+Las fuentes son todo lo que sirve como evidencia: la transcripción (descárgala desde Teams, pestaña **Transcripción** → Descargar, en `.docx` o `.vtt`), actas, especificaciones, planillas, presentaciones, diagramas, PDF o imágenes. En el paso 1, elige la opción `2` y entrega cualquiera de estas:
 
-- La ruta del archivo: `C:\Users\yo\Downloads\Reunion SAG.docx`
-- Una carpeta: el agente toma la transcripción más reciente que haya ahí.
+- Una o varias rutas de archivos: `C:\Users\yo\Downloads\Reunion SAG.docx, C:\Users\yo\Docs\arquitectura.pdf`
+- Una carpeta: el agente lee **todos** sus archivos, incluidas subcarpetas (ignora ocultos y temporales `~$`).
 - `la más reciente en Descargas`
 
-Cuando el agente encuentra el archivo por su cuenta, te muestra duración, participantes y tema para que confirmes que es el correcto.
+| Formato | Cómo se lee |
+| :--- | :--- |
+| `.docx`, `.xlsx`, `.pptx`, `.vtt`, `.txt`, `.md`, `.csv`, `.json` y otros de texto | El script los extrae a `fuentes.md` |
+| `.pdf`, `.png`, `.jpg`, `.gif`, `.webp`, `.bmp` | El agente los lee directamente |
+| Binarios antiguos (`.doc`, `.xls`, `.ppt`) | No se leen: el agente pide una versión actual o PDF |
+
+Antes de seguir, el agente muestra la lista de fuentes (con duración y participantes de las transcripciones) para que confirmes. Cada hecho que extrae cita el archivo del que salió.
 
 > **Sobre la opción Teams:** el agente puede encontrar la reunión en tu calendario (requiere el conector "claude.ai Microsoft 365", activable con `/mcp`), pero en el tenant de Sonda **la descarga automática de transcripciones está bloqueada por política**. La opción sirve para identificar la reunión y su nomenclatura; la transcripción se entrega como archivo.
 
@@ -144,7 +150,7 @@ python -m unittest discover -s tests
 | `SKILL.md` | Punto de entrada de la skill: reglas del agente y verificación de Python |
 | `specs/stage-*.md` | Instrucciones de cada etapa (ingesta, viabilidad, generación, cierre) |
 | `specs/script-*.md` | Contrato JSON de cada generador |
-| `scripts/` | Generadores deterministas (`build_*.py`), cálculo CoE (`coe.py`) y lector de transcripciones |
+| `scripts/` | Generadores deterministas (`build_*.py`), cálculo CoE (`coe.py`) y lector de fuentes (`extract_sources.py`) |
 | `scripts/sonda/` | Copia sin cambios del generador y plantilla de la skill `sonda-user-manual` |
 | `examples/*.json` | JSON de ejemplo de cada generador (también usados por los tests) |
 | `templates/rubrica_coe.md` | Rúbrica oficial del CoE |

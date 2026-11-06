@@ -1,7 +1,7 @@
 # Rúbrica de Evaluación – CoE Automatización TI
 
 ## Reglas del comité
-- Evaluar con datos, no percepciones: cada score cita la evidencia de la transcripción. Sin evidencia → `null`.
+- Evaluar con datos, no percepciones: cada score cita la evidencia y su fuente. Sin evidencia → `null`.
 - Escala 1–5.
 - Priorizar Impacto + Reutilización.
 - Evitar duplicidad.

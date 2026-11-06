@@ -23,8 +23,8 @@ python "<SKILL_DIR>/scripts/build_propuesta.py" --json "<propuesta.json>" --outp
 
 ## `evaluacion_coe`
 - `volumen_mensual`, `tiempo_minutos_por_ejecucion`: número ≥ 0 o `null`. `pct_automatizacion`: número 0–100 o `null`. **Nunca asumir valores**.
-- `impacto`, `riesgo`, `escalabilidad`, `alineamiento`, `complejidad`: entero 1–5 según `templates/rubrica_coe.md`, o `null` si la transcripción no da evidencia.
-- `<dimension>_justificacion`: definición de la rúbrica aplicada + evidencia de la transcripción.
+- `impacto`, `riesgo`, `escalabilidad`, `alineamiento`, `complejidad`: entero 1–5 según `templates/rubrica_coe.md`, o `null` si ninguna fuente da evidencia.
+- `<dimension>_justificacion`: definición de la rúbrica aplicada + evidencia citando su fuente.
 - La eficiencia NO se informa: la calcula `coe.py` desde las HH.
 
 ## Lo que hace el script
