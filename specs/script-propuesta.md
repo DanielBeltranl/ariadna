@@ -13,6 +13,7 @@ python "<SKILL_DIR>/scripts/build_propuesta.py" --json "<propuesta.json>" --outp
 | `torre`, `solicitante` | texto | no | Ausente → `[PENDIENTE]` |
 | `sistemas` | lista de textos | no | |
 | `autor` | texto | no | Ausente → `[Ingresar autor]` |
+| `version`, `cambio` | texto | no | Control de cambios; ausentes → `1.0` y `Creación del documento` |
 | `contexto` | texto | sí | Qué se hace hoy y qué función cumple en la operación |
 | `objetivo_general` | texto | sí | |
 | `objetivos_especificos` | lista de textos | sí | |

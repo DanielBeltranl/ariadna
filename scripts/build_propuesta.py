@@ -105,10 +105,10 @@ def main():
         # The cover title box fits one line, so the long initiative name goes in the subtitle.
         "title": "Propuesta Técnica",
         "subtitle": spec["iniciativa"],
-        "version": "1.0",
+        "version": spec.get("version") or "1.0",
         "version_date": today(),
         "author": spec.get("autor") or "[Ingresar autor]",
-        "change": "Creación del documento",
+        "change": spec.get("cambio") or "Creación del documento",
         "change_date": today("%d-%m-%Y"),
         "body": body(spec, result),
     }

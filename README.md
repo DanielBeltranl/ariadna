@@ -15,6 +15,7 @@ Convierte la transcripción de una reunión de levantamiento técnico, junto con
 | Archivo | Contenido |
 | :--- | :--- |
 | `Propuesta <Nombre>.docx` | Propuesta técnica en formato SONDA: contexto, objetivos, alcance, fuera de alcance, observaciones y valorización CoE |
+| `Analisis de Automatizabilidad <Nombre>.docx` | Veredicto y score (0–100) por caso de uso (automatizable, con revisión humana, por confirmar o no automatizable aún) con la evidencia de cada criterio y las preguntas pendientes |
 | `Casos de Uso <Nombre>.xlsx` | Casos de uso, una hoja por módulo |
 | `Historias de Usuario <Nombre>.xlsx` | Historias de usuario con criterios de aceptación, una hoja por módulo |
 | `Diagrama de Secuencia <Nombre>.drawio` | Diagrama de secuencia general, editable en draw.io |
@@ -89,7 +90,17 @@ Borra la carpeta `$HOME\.claude\skills\ariadna`.
 | 1 | Código y nombre formal de la iniciativa | `19-N1-COM-CL \| Gestión Alerta Enlaces caídos \| MON` |
 | 2 | ¿Qué casos de uso son viables en esta fase? | Números separados por coma (`1, 3`) o `todos` |
 
-Al final muestra la tarjeta de valorización CoE y la lista de archivos generados.
+Al final muestra la tarjeta de valorización CoE, la lista de archivos generados y ofrece subirlos a la carpeta de la iniciativa en SharePoint.
+
+### Completar una iniciativa existente
+
+Pídelo en lenguaje natural: *"completemos la iniciativa de QRadar"* o *"retomemos el 45"*. Ariadna:
+
+1. Busca la iniciativa en la carpeta **02. - Documentos Relacionados a Iniciativas** de SharePoint, aunque no le des el código exacto, y te pide confirmarla.
+2. Si ya tiene levantamiento de Ariadna, lista lo que quedó pendiente (`[PENDIENTE]`, scores CoE sin evidencia, métricas, preguntas del análisis de automatizabilidad) y te lo pregunta de a uno. Responde `no sé` para saltar una pregunta o `terminar` para cortar.
+3. Regenera los documentos como versión 1.1 ("Actualización de pendientes") y, con tu confirmación, reemplaza los archivos en SharePoint.
+
+Si la carpeta es anterior a Ariadna (solo tiene actas, docs o planillas), usa esos archivos como fuentes y hace el levantamiento completo.
 
 ### Cómo entregar las fuentes
 
@@ -110,6 +121,18 @@ Antes de seguir, el agente muestra la lista de fuentes (con duración y particip
 > **Sobre la opción Teams:** el agente puede encontrar la reunión en tu calendario (requiere el conector "claude.ai Microsoft 365", activable con `/mcp`), pero en el tenant de Sonda **la descarga automática de transcripciones está bloqueada por política**. La opción sirve para identificar la reunión y su nomenclatura; la transcripción se entrega como archivo.
 
 ---
+
+## Cómo se decide si un caso es automatizable
+
+Antes de valorizar, cada caso de uso se evalúa con 9 criterios de [`templates/criterios_automatizabilidad.md`](templates/criterios_automatizabilidad.md): reglas, entradas, estabilidad, volumen, excepciones, sistemas, optimización, resultado medible y riesgo. El veredicto lo calcula `build_automatizabilidad.py`:
+
+- Reglas, entradas, estabilidad o excepciones sin cumplir → **No automatizable aún**. Sin evidencia en alguno de ellos → **Por confirmar**.
+- Riesgo sin cumplir → **Automatizable con revisión humana**.
+- Sistemas sin cumplir no descarta el caso: queda como observación para que el equipo proponga una vía de integración.
+
+Además, un **score de 0 a 100** mide qué tan cerca está el caso: cumple suma 1, parcial 0,5, no cumple o sin evidencia 0, y los criterios eliminatorios pesan el doble. Nivel: ≥80 Alto, 50–79 Medio, <50 Bajo.
+
+El veredicto y el score son una recomendación; en el Stage 2 el usuario decide qué casos son viables.
 
 ## Cómo se calcula la valorización CoE
 
@@ -149,11 +172,13 @@ python -m unittest discover -s tests
 | :--- | :--- |
 | `SKILL.md` | Punto de entrada de la skill: reglas del agente y verificación de Python |
 | `specs/stage-*.md` | Instrucciones de cada etapa (ingesta, viabilidad, generación, cierre) |
+| `specs/modo-completar.md` | Flujo para completar una iniciativa existente en SharePoint |
 | `specs/script-*.md` | Contrato JSON de cada generador |
-| `scripts/` | Generadores deterministas (`build_*.py`), cálculo CoE (`coe.py`) y lector de fuentes (`extract_sources.py`) |
+| `scripts/` | Generadores deterministas (`build_*.py`), cálculo CoE (`coe.py`), lector de fuentes (`extract_sources.py`) y lista de pendientes (`pendientes.py`) |
 | `scripts/sonda/` | Copia sin cambios del generador y plantilla de la skill `sonda-user-manual` |
 | `examples/*.json` | JSON de ejemplo de cada generador (también usados por los tests) |
 | `templates/rubrica_coe.md` | Rúbrica oficial del CoE |
+| `templates/criterios_automatizabilidad.md` | Criterios y reglas del análisis de automatizabilidad |
 
 Principio de diseño: el modelo solo extrae información y arma JSON; todos los archivos y cálculos los producen scripts, así el formato es siempre el mismo y se gastan menos tokens.
 

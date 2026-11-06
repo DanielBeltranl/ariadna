@@ -60,6 +60,22 @@ class BuildPropuestaTest(unittest.TestCase):
         self.assertEqual(card.strip(), proc.stdout.split("\n", 1)[1].strip())
         self.assertIn("VALORIZACIÓN INICIAL CoE", card)
 
+    def test_uses_version_and_change_when_given(self):
+        spec = json.loads(json.dumps(EXAMPLE))
+        spec["version"], spec["cambio"] = "1.1", "Actualización de pendientes"
+        with tempfile.TemporaryDirectory() as tmp:
+            proc, out = run(spec, tmp)
+            self.assertEqual(proc.returncode, 0, proc.stderr)
+            xml = document_xml(out)
+        self.assertIn("1.1", xml)
+        self.assertIn("Actualización de pendientes", xml)
+
+    def test_defaults_to_first_version(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            _, out = run(EXAMPLE, tmp)
+            xml = document_xml(out)
+        self.assertIn("Creación del documento", xml)
+
     def test_rejects_missing_required_field(self):
         spec = {k: v for k, v in EXAMPLE.items() if k != "objetivo_general"}
         with tempfile.TemporaryDirectory() as tmp:

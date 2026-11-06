@@ -5,10 +5,11 @@
    ```text
    Archivos generados en docs/proyectos/<slug>/:
    - Propuesta <Nombre>.docx
+   - Analisis de Automatizabilidad <Nombre>.docx
    - Casos de Uso <Nombre>.xlsx
    - Historias de Usuario <Nombre>.xlsx
    - Diagrama de Secuencia <Nombre>.drawio
-   - fuentes.md y los 4 JSON (para regenerar si se corrigen datos)
+   - fuentes.md y los 5 JSON (para regenerar si se corrigen datos)
    ```
 3. Enumera los datos que quedaron `[PENDIENTE]` o sin score (la tarjeta los muestra).
 4. Recuerda: actualizar la tabla de contenido del .docx en Word (clic derecho → "Actualizar campos") y que "Decisión tomada" y "Responsable definido" los completa el comité.

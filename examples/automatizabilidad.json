@@ -1,0 +1,36 @@
+{
+  "iniciativa": "19-N1-COM-CL | Gestión Alerta Enlaces caídos | MON",
+  "autor": "Equipo CoE",
+  "casos": [
+    {
+      "id": "UC-01",
+      "titulo": "Validar enlace caído y abrir ticket",
+      "criterios": {
+        "reglas": {"estado": "cumple", "evidencia": "Si el ping falla 3 veces seguidas, el operador abre un ticket P2 [fuente: Reunion Enlaces.docx]"},
+        "entradas": {"estado": "cumple", "evidencia": "La alerta de Zabbix siempre trae host, IP y sitio [fuente: Reunion Enlaces.docx]"},
+        "estabilidad": {"estado": "cumple", "evidencia": "El procedimiento no cambia desde 2023 [fuente: Procedimiento Enlaces.pdf]"},
+        "volumen": {"estado": "cumple", "evidencia": "Unas 600 alertas al mes [fuente: Reunion Enlaces.docx]"},
+        "excepciones": {"estado": "parcial", "evidencia": "Los enlaces satelitales se revisan distinto [fuente: Reunion Enlaces.docx]", "pregunta": "¿Qué porcentaje de las alertas corresponde a enlaces satelitales?"},
+        "sistemas": {"estado": "cumple", "evidencia": "Zabbix y Remedy tienen API REST [fuente: Reunion Enlaces.docx]"},
+        "optimizacion": {"estado": "sin_evidencia", "evidencia": "", "pregunta": "¿Hay pasos de la validación que hoy se repitan o que nadie use?"},
+        "medible": {"estado": "cumple", "evidencia": "El resultado es un ticket creado en Remedy [fuente: Reunion Enlaces.docx]"},
+        "riesgo": {"estado": "cumple", "evidencia": "Un ticket duplicado no tiene impacto en el cliente [fuente: Reunion Enlaces.docx]"}
+      }
+    },
+    {
+      "id": "UC-02",
+      "titulo": "Diagnosticar la causa raíz del corte",
+      "criterios": {
+        "reglas": {"estado": "no_cumple", "evidencia": "El especialista decide según su experiencia con cada proveedor [fuente: Reunion Enlaces.docx]", "pregunta": "¿Se puede documentar cómo decide el especialista para cada proveedor?"},
+        "entradas": {"estado": "parcial", "evidencia": "Los proveedores responden por correo libre [fuente: Reunion Enlaces.docx]"},
+        "estabilidad": {"estado": "cumple", "evidencia": "Mismo flujo desde 2023 [fuente: Procedimiento Enlaces.pdf]"},
+        "volumen": {"estado": "parcial", "evidencia": "Unos 40 cortes reales al mes [fuente: Reunion Enlaces.docx]"},
+        "excepciones": {"estado": "no_cumple", "evidencia": "Cada corte es distinto según el proveedor [fuente: Reunion Enlaces.docx]"},
+        "sistemas": {"estado": "no_cumple", "evidencia": "Los portales de los proveedores no tienen API [fuente: Reunion Enlaces.docx]"},
+        "optimizacion": {"estado": "sin_evidencia", "evidencia": "", "pregunta": "¿Hay pasos del diagnóstico que se repitan o se puedan eliminar?"},
+        "medible": {"estado": "parcial", "evidencia": "La causa queda escrita en el ticket como texto libre [fuente: Reunion Enlaces.docx]"},
+        "riesgo": {"estado": "no_cumple", "evidencia": "Un diagnóstico errado puede escalar al proveedor equivocado y extender la caída [fuente: Reunion Enlaces.docx]"}
+      }
+    }
+  ]
+}
