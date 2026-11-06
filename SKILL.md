@@ -47,6 +47,6 @@ No sigas con el Stage 1 hasta que la verificación imprima `OK`. Nunca instales 
 1. `specs/stage-1-ingesta.md` — origen de las fuentes (archivos o carpeta, cualquier formato), confirmación, nomenclatura y extracción de hechos.
 2. `specs/stage-2-viabilidad.md` — puerta de control de casos de uso.
 3. `specs/stage-3-generacion.md` — JSON + scripts (contratos en `specs/script-*.md`).
-4. `specs/stage-4-cierre.md` — tarjeta CoE y archivos generados.
+4. `specs/stage-4-cierre.md` — tarjeta CoE, archivos generados y publicación en la carpeta de la iniciativa en SharePoint.
 
 Rúbrica CoE para asignar scores: `<SKILL_DIR>/templates/rubrica_coe.md`.
